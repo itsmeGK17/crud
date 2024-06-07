@@ -61,6 +61,7 @@ const blockInvalidChar = (e) => {
 }
   const handleSubmit = (e) => {
     e.preventDefault()
+
     const eregex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     setError(eregex)
     let regex = /^[a-zA-Z0-9]*$/
@@ -76,6 +77,7 @@ const blockInvalidChar = (e) => {
 
       const updatedData = [...allData, formData]
       setAllData(updatedData);
+
       localStorage.setItem("listkey", JSON.stringify(updatedData));
       toast.success("User Add Successfully", {
         position: "top-center",
@@ -118,7 +120,7 @@ const blockInvalidChar = (e) => {
     const deleteData = allData.filter((element, id) => id !== index);
     setAllData(deleteData);
     toast.success("User Removed ", {
-      position: "top-center",
+      position: "center",
       theme: "dark",
       autoClose: 1500,
     })
@@ -237,6 +239,7 @@ const blockInvalidChar = (e) => {
             helperText={error.city}
           />
           <FormControl >
+            <FormControlLabel>Gender:</FormControlLabel>
             <RadioGroup
               row
               label="Gender"
@@ -248,11 +251,6 @@ const blockInvalidChar = (e) => {
               <FormControlLabel value="Female" control={<Radio />} label="Female" />
             </RadioGroup>
           </FormControl>
-
-
-
-
-
           <button type="submit" className="btn btn-primary">
             {editIndex === null ? "Submit" : "Update"}
           </button>
